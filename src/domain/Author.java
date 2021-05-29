@@ -2,6 +2,8 @@ package domain;
 
 import utils.PackUtils;
 
+import javax.swing.*;
+
 public class Author {
 
     public static final int NAME_LIMIT = 20;
@@ -17,15 +19,31 @@ public class Author {
 
 
     public Author(long id, String name) {
-        throw new UnsupportedOperationException("paso 1");
+        this.id = id;
+        this.name = name;
+        numBooks = 0;
+        firstBookId = -1L;
+        lastBookId = -1L;
     }
 
     public Author(long id, String name, int numBooks, long firstBookId, long lastBookId) {
-        throw new UnsupportedOperationException("paso 1");
+        this.id = id;
+        this.name = name;
+        this.numBooks = numBooks;
+        this.firstBookId = firstBookId;
+        this.lastBookId = lastBookId;
     }
 
     public void addBookId(long idBook) {
-        throw new UnsupportedOperationException("paso 1");
+        if(firstBookId == -1L){
+            firstBookId = idBook;
+            lastBookId = idBook;
+            numBooks++;
+
+        }else{
+            lastBookId = idBook;
+            numBooks++;
+       }
     }
 
     public byte[] toBytes() {
@@ -37,23 +55,23 @@ public class Author {
     }
 
     public long getId() {
-        throw new UnsupportedOperationException("paso 1");
+        return id;
     }
 
     public String getName() {
-        throw new UnsupportedOperationException("paso 1");
+        return name;
     }
 
     public long getLastBookId() {
-        throw new UnsupportedOperationException("paso 1");
+        return lastBookId;
     }
 
     public int getNumBooks() {
-        throw new UnsupportedOperationException("paso 1");
+        return numBooks;
     }
 
     public long getFirstBookId() {
-        throw new UnsupportedOperationException("paso 1");
+        return firstBookId;
     }
 
     @Override
